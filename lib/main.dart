@@ -17,8 +17,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Material App',
-          theme:
-              ThemeData(colorScheme: ColorScheme.light(primary: mainColors())),
+          theme: ThemeData(
+            appBarTheme: AppBarTheme(
+                elevation: 1,
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black),
+            colorScheme: ColorScheme.light(primary: mainColors()),
+          ),
           home: FirstScreen()),
     );
   }
