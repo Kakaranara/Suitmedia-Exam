@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
 
-class SecondScreen extends StatefulWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({Key? key}) : super(key: key);
 
   @override
-  State<SecondScreen> createState() => _SecondScreenState();
+  State<ThirdScreen> createState() => _ThirdScreenState();
 }
 
-class _SecondScreenState extends State<SecondScreen> {
+class _ThirdScreenState extends State<ThirdScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Third Screen"),
+      ),
+      body: Center(
+        child: _card(),
+      ),
+    );
+  }
+
+  Widget _card() {
+    return InkWell(
+      onTap: () {},
+      child: ListTile(
+        leading: CircleAvatar(child: Image.asset("res/ic_photo.png")),
+        title: Text("First Name"),
+        subtitle: Text("Afafaf"),
+      ),
+    );
   }
 }

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:suitmedia_test/third.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -47,7 +48,10 @@ class _SecondScreenState extends State<SecondScreen> {
       padding: const EdgeInsets.all(16),
       child: ElevatedButton(
         child: Text("Choose a User"),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => ThirdScreen()));
+        },
       ),
     );
   }
