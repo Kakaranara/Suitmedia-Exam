@@ -44,7 +44,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
         child: BlocBuilder<ReqresCubit, ReqresState>(
           builder: (context, state) {
             if (state is ReqresInitial) {
-              context.read<ReqresCubit>().getInitialData();
+              context.read<ReqresCubit>().getData();
               return CenteredIndicator();
             }
 
