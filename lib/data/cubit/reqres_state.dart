@@ -5,9 +5,17 @@ abstract class ReqresState {}
 
 class ReqresInitial extends ReqresState {}
 
-class ReqresLoaded extends ReqresState {}
+class ReqresLoaded extends ReqresState {
+  final List<Reqres> data;
 
-class ReqresLoading extends ReqresState {}
+  ReqresLoaded({required this.data});
+}
+
+class ReqresLoading extends ReqresState {
+  final List<Reqres> oldData;
+
+  ReqresLoading({required this.oldData});
+}
 
 class ReqresError extends ReqresState {
   String message;
