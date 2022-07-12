@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suitmedia_test/data/cubit/reqres_cubit.dart';
 import 'package:suitmedia_test/data/model/Reqres.dart';
+import 'package:suitmedia_test/namestate/cubit/name_cubit.dart';
 
 class ThirdScreen extends StatefulWidget {
   const ThirdScreen({Key? key}) : super(key: key);
@@ -85,6 +86,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
   Widget _card({required String fullName, required String email}) {
     return InkWell(
       onTap: () {
+        context.read<NameCubit>().changeName(name: fullName);
         Navigator.of(context).pop();
       },
       child: ListTile(

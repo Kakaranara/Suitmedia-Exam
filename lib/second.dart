@@ -5,6 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suitmedia_test/data/cubit/reqres_cubit.dart';
+import 'package:suitmedia_test/namestate/cubit/name_cubit.dart';
 import 'package:suitmedia_test/third.dart';
 
 class SecondScreen extends StatefulWidget {
@@ -45,9 +46,13 @@ class _SecondScreenState extends State<SecondScreen> {
             Text("${name}"),
             Expanded(
               child: Center(
-                child: Text(
-                  "Selected User Name",
-                  style: style,
+                child: BlocBuilder<NameCubit, NameState>(
+                  builder: (context, state) {
+                    return Text(
+                      "${state.nama}",
+                      style: style,
+                    );
+                  },
                 ),
               ),
             )

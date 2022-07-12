@@ -1,6 +1,8 @@
 part of 'name_cubit.dart';
 
 @immutable
-abstract class NameState {}
+class NameState {
+  final String nama;
 
-class NameInitial extends NameState {}
+  NameState({required this.nama});
+}
