@@ -124,8 +124,8 @@ class _FirstScreenState extends State<FirstScreen> {
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide.none),
           hintText: name,
           filled: true,
           fillColor: Colors.white),
