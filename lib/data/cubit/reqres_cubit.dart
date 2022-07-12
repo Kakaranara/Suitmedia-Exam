@@ -11,10 +11,11 @@ class ReqresCubit extends Cubit<ReqresState> {
   ReqresCubit() : super(ReqresInitial());
 
   final _repo = ReqResRepository();
-  int _page = 0;
+  int _page = 1;
 
   Future<void> getData() async {
     try {
+      print("page : $_page");
       if (state is ReqresLoading) return;
 
       final currentState = state;
@@ -22,15 +23,27 @@ class ReqresCubit extends Cubit<ReqresState> {
       if (currentState is ReqresLoaded) {
         oldData = currentState.data;
       }
-
       emit(ReqresLoading(oldData: oldData));
       final List<Reqres> newData = await _repo.getPeopleData(page: _page);
+
       oldData.addAll(newData);
+      _page++;
       emit(ReqresLoaded(data: oldData));
     } on SocketException catch (e) {
       emit(ReqresError(message: "Terjadi kesalahan pada koneksi internet"));
     } catch (e) {
       emit(ReqresError(message: "Terjadi masalah pada server."));
     }
+  }
+
+  ///this func is made because
+  Future<void> getInitialData() async {
+    await getData();
+    await getData();
+  }
+
+  void refresh() {
+    _page = 1;
+    emit(ReqresInitial());
   }
 }

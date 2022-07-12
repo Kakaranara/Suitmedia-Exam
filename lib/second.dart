@@ -50,6 +50,9 @@ class _SecondScreenState extends State<SecondScreen> {
       padding: const EdgeInsets.all(16),
       child: ElevatedButton(
         child: Text("Choose a User"),
+        style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15))),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (_) => BlocProvider(
