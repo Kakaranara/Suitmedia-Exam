@@ -84,7 +84,9 @@ class _ThirdScreenState extends State<ThirdScreen> {
 
   Widget _card({required String fullName, required String email}) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pop();
+      },
       child: ListTile(
         leading: CircleAvatar(child: Image.asset("res/ic_photo.png")),
         title: Text("$fullName"),
