@@ -42,8 +42,11 @@ class _SecondScreenState extends State<SecondScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Welcome"),
-            Text("${name}"),
+            Text("Welcome,"),
+            Text(
+              "${name}",
+              style: style,
+            ),
             Expanded(
               child: Center(
                 child: BlocBuilder<NameCubit, NameState>(
