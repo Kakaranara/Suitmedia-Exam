@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 Widget newBackButton(BuildContext context) {
-  return GestureDetector(
+  return InkWell(
     onTap: () {
       Navigator.of(context).pop();
     },
