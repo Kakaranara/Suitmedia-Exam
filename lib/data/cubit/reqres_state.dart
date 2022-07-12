@@ -7,8 +7,9 @@ class ReqresInitial extends ReqresState {}
 
 class ReqresLoaded extends ReqresState {
   final List<Reqres> data;
+  final bool isListEmpty;
 
-  ReqresLoaded({required this.data});
+  ReqresLoaded({required this.data, this.isListEmpty = false});
 }
 
 class ReqresLoading extends ReqresState {

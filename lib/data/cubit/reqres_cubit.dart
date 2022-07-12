@@ -26,9 +26,13 @@ class ReqresCubit extends Cubit<ReqresState> {
       emit(ReqresLoading(oldData: oldData));
       final List<Reqres> newData = await _repo.getPeopleData(page: _page);
 
-      oldData.addAll(newData);
-      _page++;
-      emit(ReqresLoaded(data: oldData));
+      if (newData.isEmpty) {
+        emit(ReqresLoaded(data: oldData, isListEmpty: true));
+      } else {
+        oldData.addAll(newData);
+        _page++;
+        emit(ReqresLoaded(data: oldData));
+      }
     } on SocketException catch (e) {
       emit(ReqresError(message: "Terjadi kesalahan pada koneksi internet"));
     } catch (e) {

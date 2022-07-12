@@ -50,20 +50,26 @@ class _ThirdScreenState extends State<ThirdScreen> {
 
             List<Reqres> dataState = [];
             bool isLoading = false;
+            bool isListEmpty = false;
             if (state is ReqresLoading) {
               isLoading = true;
               dataState = state.oldData;
             } else if (state is ReqresLoaded) {
               dataState = state.data;
+              isListEmpty = state.isListEmpty;
             }
 
             if (dataState.isEmpty && isLoading == false) {
-              return Center(child: Text("Empty"));
+              return const Center(child: Text("Empty"));
             }
+
+            print("empty ? $isListEmpty");
 
             return ListView.separated(
               controller: scrollController,
-              itemCount: dataState.length + (isLoading ? 1 : 0),
+              itemCount: dataState.length +
+                  (isLoading ? 1 : 0) +
+                  (isListEmpty ? 1 : 0),
               itemBuilder: (c, i) {
                 if (i < dataState.length) {
                   final data = dataState[i];
@@ -72,6 +78,16 @@ class _ThirdScreenState extends State<ThirdScreen> {
                           "${data.first_name ?? ""} ${data.last_name ?? ""}",
                       email: data.email ?? "Tidak ada email",
                       photo: data.avatar ?? "https://via.placeholder.com/150");
+                } else if (isListEmpty) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("No more data"),
+                      const SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  );
                 } else {
                   return CenteredIndicator();
                 }
