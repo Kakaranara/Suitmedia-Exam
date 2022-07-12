@@ -12,6 +12,25 @@ class _FirstScreenState extends State<FirstScreen> {
   final stringController = TextEditingController();
   final palingdrome = TextEditingController();
 
+  void isPalindrome({required String value}) {
+    String data = value.replaceAll(" ", "");
+    List listAnswer = [];
+    for (int i = data.length - 1; i >= 0; i--) {
+      listAnswer.add(data[i]);
+    }
+    String answer = listAnswer.join();
+    String content = answer.isEmpty
+        ? "Tolong masukkan input."
+        : answer == data
+            ? "Yes, it's Palindrome"
+            : "Not Palindrome";
+    showDialog(
+        context: context,
+        builder: (cont) => AlertDialog(
+              content: Text(content),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +53,11 @@ class _FirstScreenState extends State<FirstScreen> {
                   _space(),
                   _inputTempate(controller: palingdrome, name: "Palindrome"),
                   _hugeSpace(),
-                  _button(text: "CHECK", onpress: () {}),
+                  _button(
+                      text: "CHECK",
+                      onpress: () {
+                        isPalindrome(value: palingdrome.text);
+                      }),
                   _lilSpace(),
                   _button(
                       text: "NEXT",
