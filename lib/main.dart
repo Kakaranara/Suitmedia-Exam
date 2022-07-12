@@ -14,17 +14,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => NameCubit(),
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Material App',
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(
-                elevation: 1,
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black),
-            colorScheme: ColorScheme.light(primary: mainColors()),
-          ),
-          home: FirstScreen()),
+      child: GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Material App',
+            theme: ThemeData(
+              appBarTheme: AppBarTheme(
+                  elevation: 1,
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black),
+              colorScheme: ColorScheme.light(primary: mainColors()),
+            ),
+            home: FirstScreen()),
+      ),
     );
   }
 }
