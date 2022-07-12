@@ -8,13 +8,25 @@ import 'package:suitmedia_test/data/cubit/reqres_cubit.dart';
 import 'package:suitmedia_test/third.dart';
 
 class SecondScreen extends StatefulWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+  const SecondScreen({Key? key, required this.name}) : super(key: key);
+
+  final String name;
 
   @override
   State<SecondScreen> createState() => _SecondScreenState();
 }
 
 class _SecondScreenState extends State<SecondScreen> {
+  String? name = null;
+
+  @override
+  void initState() {
+    super.initState();
+    name = widget.name.isEmpty || widget.name == ""
+        ? "Anonymus User"
+        : widget.name;
+  }
+
   @override
   Widget build(BuildContext context) {
     final style = Theme.of(context).textTheme.headline6;
@@ -30,7 +42,7 @@ class _SecondScreenState extends State<SecondScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Welcome"),
-            Text("John Doe"),
+            Text("${name}"),
             Expanded(
               child: Center(
                 child: Text(
@@ -51,6 +63,7 @@ class _SecondScreenState extends State<SecondScreen> {
       child: ElevatedButton(
         child: Text("Choose a User"),
         style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 15),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15))),
         onPressed: () {

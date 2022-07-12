@@ -39,8 +39,10 @@ class _FirstScreenState extends State<FirstScreen> {
                   _button(
                       text: "NEXT",
                       onpress: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => SecondScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => SecondScreen(
+                                  name: stringController.text,
+                                )));
                       })
                 ],
               ),
