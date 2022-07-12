@@ -68,7 +68,8 @@ class _ThirdScreenState extends State<ThirdScreen> {
                   return _card(
                       fullName:
                           "${data.first_name ?? ""} ${data.last_name ?? ""}",
-                      email: data.email ?? "Tidak ada email");
+                      email: data.email ?? "Tidak ada email",
+                      photo: data.avatar ?? "https://via.placeholder.com/150");
                 } else {
                   return CenteredIndicator();
                 }
@@ -83,14 +84,24 @@ class _ThirdScreenState extends State<ThirdScreen> {
     );
   }
 
-  Widget _card({required String fullName, required String email}) {
+  Widget _card(
+      {required String fullName,
+      required String email,
+      required String photo}) {
     return InkWell(
       onTap: () {
         context.read<NameCubit>().changeName(name: fullName);
         Navigator.of(context).pop();
       },
       child: ListTile(
-        leading: CircleAvatar(child: Image.asset("res/ic_photo.png")),
+        leading: ClipOval(
+          child: Image.network(
+            "$photo",
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+          ),
+        ),
         title: Text("$fullName"),
         subtitle: Text("$email"),
       ),
