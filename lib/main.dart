@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             title: 'Material App',
             theme: ThemeData(
               appBarTheme: AppBarTheme(
-                  elevation: 1,
+                  elevation: 0.35,
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.black),
               colorScheme: ColorScheme.light(primary: mainColors()),

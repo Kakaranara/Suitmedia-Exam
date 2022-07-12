@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:suitmedia_test/constant/colors.dart';
+import 'package:suitmedia_test/constant/widget.dart';
 import 'package:suitmedia_test/data/cubit/reqres_cubit.dart';
 import 'package:suitmedia_test/namestate/cubit/name_cubit.dart';
 import 'package:suitmedia_test/third.dart';
@@ -35,6 +37,7 @@ class _SecondScreenState extends State<SecondScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Second Screen"),
+        leading: newBackButton(context),
       ),
       bottomNavigationBar: _bottomNavbar(),
       body: Container(

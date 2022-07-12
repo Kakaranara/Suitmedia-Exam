@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:suitmedia_test/constant/widget.dart';
 import 'package:suitmedia_test/data/cubit/reqres_cubit.dart';
 import 'package:suitmedia_test/data/model/Reqres.dart';
 import 'package:suitmedia_test/namestate/cubit/name_cubit.dart';
@@ -36,6 +37,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Third Screen"),
+        leading: newBackButton(context),
       ),
       body: RefreshIndicator(
         onRefresh: checkAll,
